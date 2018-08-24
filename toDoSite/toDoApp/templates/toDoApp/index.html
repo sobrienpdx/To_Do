@@ -1,0 +1,46 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TOOODODODOD!!!</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{%static 'toDoApp/style.css' %}"/>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Do all these things:</h1>
+
+    <div class="holder">
+      <form action="{% url 'toDoApp:add' %}" method="post">
+        {% csrf_token%}
+        <input type="text" name="to_do_text" placeholder="item to add...">
+        <button type="submit">+</button>
+      </form>
+
+      <ul>
+        {% for item in to_do_list %}
+        <li>
+          <form action="{% url 'toDoApp:delete' pk=item.id %}" method="post">
+            {% csrf_token%}
+            <p {% if item.completed%}
+                  class="completed"
+                {%endif%}>
+              {{item.to_do_text}} <button type="submit" name="{{item.id}}">Remove</button></p>
+          </form>
+          <button><a href="{% url 'toDoApp:mark_done' pk=item.id %}">Mark Done</a></button>
+          <!-- <button><a href="{% url 'toDoApp:delete' pk=item.id %}">x</a></button> -->
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</body>
+<html>
+
+
+{% endblock content %}

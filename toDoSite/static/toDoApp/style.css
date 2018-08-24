@@ -1,0 +1,39 @@
+body {
+	background-color: #58595ee3;
+	color: #dfdbdb;
+	font-family: "my_underwood";
+	margin: 0;
+}
+@font-face {
+    font-family: my_underwood;
+    src: url(MyUnderwood.ttf);
+  }
+
+#app {
+	background-image: url('notebook.png');
+	background-repeat: no-repeat;
+	background-size: 100vw;
+	height: 100vh;
+}
+
+input {
+	background-color: #58595ee3;
+	color: #white;
+	margin-left: 30%;
+	border-color: #58595ee3;
+}
+
+h1 {
+	padding-top: 20vw;
+	text-align: center;
+}
+
+.sidebar-nav {
+	display: flex;
+	margin-bottom: 0;
+}
+.sidebar-nav a {
+	margin-bottom: .3em;
+	margin-left: .3em;
+	color: #dfdbdb;
+}
