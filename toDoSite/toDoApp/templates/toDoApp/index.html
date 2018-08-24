@@ -25,15 +25,19 @@
       <ul>
         {% for item in to_do_list %}
         <li>
-          <form action="{% url 'toDoApp:delete' pk=item.id %}" method="post">
-            {% csrf_token%}
-            <p {% if item.completed%}
-                  class="completed"
-                {%endif%}>
-              {{item.to_do_text}} <button type="submit" name="{{item.id}}">Remove</button></p>
+          <p
+						{% if item.completed%}
+            class="completed"
+            {%endif%}>
+            {{item.to_do_text}}
+					</p>
+					<form action="{% url 'toDoApp:delete' pk=item.id %}" method="post">
+						<button type="submit" name="{{item.id}}">
+							Remove
+						</button>
+						{% csrf_token%}
           </form>
-          <button><a href="{% url 'toDoApp:mark_done' pk=item.id %}">Mark Done</a></button>
-          <!-- <button><a href="{% url 'toDoApp:delete' pk=item.id %}">x</a></button> -->
+          <a href="{% url 'toDoApp:mark_done' pk=item.id %}">Mark Done</a></button>
         </li>
         {% endfor %}
       </ul>

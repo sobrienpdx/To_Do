@@ -26,7 +26,21 @@ input {
 h1 {
 	padding-top: 20vw;
 	text-align: center;
+	font-size: 6vw;
 }
+li {
+	text-decoration: underline;
+  list-style-type: none;
+	display: flex;
+}
+
+ul {
+	text-indent: 3em;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+	}
 
 .sidebar-nav {
 	display: flex;
@@ -35,5 +49,11 @@ h1 {
 .sidebar-nav a {
 	margin-bottom: .3em;
 	margin-left: .3em;
+	color: #dfdbdb;
+	font-size: 2.5vw;s
+}
+
+a {
+	font-family: "my_underwood";
 	color: #dfdbdb;
 }
