@@ -1,0 +1,70 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>To Do List</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'rest_app/style.css' %}">
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-resource@1.5.1/dist/vue-resource.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+  </head>
+
+
+	<body>
+	  <div id="app">
+	          <h1>${heading}</h1>
+
+	          <div class="holder">
+	              <!-- Hint: modify this input to handle addTodo() -->
+	              <input
+	                type="text"
+	                placeholder="Create note..."
+	                v-on:keyup.enter="addToDo"
+	                v-model="textForToDo"
+	              />
+								<div >
+									<input id="search"
+									type="text"
+									placeholder="Search database..."
+									v-on:keyup="search"
+									v-model="query"
+									/>
+								</div>
+
+								<ul>
+										<li
+										v-for="(x, index) in results"
+										v-bind:class="{completed: x.completed}"
+										v-bind:index="index"
+										>
+											${x.text}
+											<button class="done" v-on:click="markDone(x.id, x.completed)">done</button>
+											<!-- <button class="remove" v-on:click="removeToDo(x.id)">remove</button> -->
+									</li>
+								</ul>
+
+
+	              <ul>
+	                  <li
+	                  v-for="(x, index) in toDos"
+	                  v-bind:class="{completed: x.completed}"
+	                  v-bind:index="index"
+	                  >
+	                    ${x.text}
+	                    <button class="done" v-on:click="markDone(x.id, x.completed)">done</button>
+	                    <button class="remove" v-on:click="removeToDo(x.id)">remove</button>
+	                </li>
+	              </ul>
+	          </div>
+
+	      </div>
+
+	<script src="{% static 'rest_app/script.js' %}"></script>
+	</body>

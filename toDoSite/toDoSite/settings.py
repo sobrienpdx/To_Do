@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'toDoApp.apps.TodoappConfig',
+	'rest_app.apps.RestAppConfig',
+	'rest_framework',
+	'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +134,20 @@ STATICFILES_DIRS = ( #add this so that site can find index.html in app
 #redirect to home URL after loging/logout
 LOGIN_REDIRECT_URL = '/toDoApp/' #or however we actaully set it up at the site level url page /todo/index/ etc.
 LOGIN_REDIRECT_URL = '/'
+
+
+# Django Rest Framework
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'todovue.permissions.AllowOptionsAuthentication',
+        'rest_framework.permissions.AllowAny',
+    ],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+		'rest_framework.authentication.BasicAuthentication',
+    ],
+}
